@@ -1,3 +1,4 @@
 {
-  "mongoURI": "mongodb+srv://bivek123:bivek123@devlinked-b8zom.mongodb.net/test?retryWrites=true&w=majority"
+  "mongoURI": "mongodb+srv://bivek123:bivek123@devlinked-b8zom.mongodb.net/test?retryWrites=true&w=majority",
+  "jwtSecret": "evilmonkey"
 }
