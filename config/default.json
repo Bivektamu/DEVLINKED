@@ -1,4 +1,6 @@
 {
   "mongoURI": "mongodb+srv://bivek123:bivek123@devlinked-b8zom.mongodb.net/test?retryWrites=true&w=majority",
-  "jwtSecret": "evilmonkey"
+  "jwtSecret": "evilmonkey",
+  "githubClientId": "9f2dd117c2b50ec1a5a6",
+  "githubSecret": "f8ccb47237e3fe1b795ed7241286fee265c74f96"
 }
