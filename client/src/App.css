@@ -48,6 +48,15 @@ section {
   padding: 0 3rem;
   /* background: url('./img/landing.svg') var(--medium-color); */
 }
+.spinner {
+  position: fixed;
+  z-index: 9;
+  right: 0;
+  width: 70%;
+  height: 100vh;
+  display: flex;
+  background: #fff;
+}
 .container {
   max-width: 1100px;
   margin: auto;
