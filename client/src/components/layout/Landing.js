@@ -5,10 +5,10 @@ const Landing = () => {
     <section className='landing'>
       <div className='dark-overlay'>
         <div className='landing-inner'>
-          <h1 className='x-large'>Developer Connector</h1>
+          <h1 className='x-large'>Developer Linked!</h1>
           <p className='lead'>
-            Create a developer profile/portfolio, share posts and get help from
-            other developers
+            Create a developer profile/portfolio, share posts, help or get help
+            from other developers
           </p>
           <div className='buttons'>
             <a href='register.html' className='btn btn-primary'>

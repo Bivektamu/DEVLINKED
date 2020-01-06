@@ -3,9 +3,9 @@ import React from 'react';
 const NavBar = () => {
   return (
     <nav className='navbar bg-dark'>
-      <h1>
+      <h1 className='logo'>
         <a href='index.html'>
-          <i className='fas fa-code'></i> DevConnector
+          <i className='fas fa-code'></i> DevLinked
         </a>
       </h1>
       <ul>
