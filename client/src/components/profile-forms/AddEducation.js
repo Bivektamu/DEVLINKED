@@ -97,8 +97,7 @@ const AddEducation = ({ addEducation, history }) => {
                   console.log(toDateDisabled);
                 }}
               />
-              {''}
-              Current
+              &nbsp;Current
             </p>
           </div>
           <div className='form-group'>

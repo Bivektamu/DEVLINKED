@@ -89,8 +89,7 @@ const AddExperience = ({ addExperience, history }) => {
                   console.log(toDateDisabled);
                 }}
               />
-              {''}
-              Current Job
+              &nbsp;Current Job
             </p>
           </div>
           <div className='form-group'>
