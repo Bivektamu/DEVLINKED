@@ -2,6 +2,9 @@ import React, { useEffect, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
+import Experience from './Experience';
+import Education from './Education';
+
 import { getCurrentProfile } from '../../actions/profile';
 import { Link } from 'react-router-dom';
 
@@ -15,6 +18,7 @@ const Dashboard = ({
   }, [getCurrentProfile]);
 
   if (loading && profile === null) return <Spinner />;
+  console.log(profile);
 
   return (
     <section>
@@ -25,7 +29,21 @@ const Dashboard = ({
         </p>
 
         {profile !== null ? (
-          <Fragment>has</Fragment>
+          <Fragment>
+            <div class='dash-buttons'>
+              <Link to='/edit-profile' class='btn btn-light'>
+                <i class='fas fa-user-circle text-primary'></i> Edit Profile
+              </Link>
+              <Link to='/add-experience' class='btn btn-light w250'>
+                <i class='fab fa-black-tie text-primary'></i> Add Experience
+              </Link>
+              <Link to='/add-education' class='btn btn-light w250'>
+                <i class='fas fa-graduation-cap text-primary'></i> Add Education
+              </Link>
+            </div>
+            <Experience experience={profile.experience} />
+            <Education education={profile.education} />
+          </Fragment>
         ) : (
           <Fragment>
             <p>You have not yet setup a profile. Please add some info.</p>
