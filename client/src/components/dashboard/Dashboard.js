@@ -20,7 +20,6 @@ const Dashboard = ({
   }, [getCurrentProfile]);
 
   if (loading && profile === null) return <Spinner />;
-  console.log(profile);
 
   return (
     <section>

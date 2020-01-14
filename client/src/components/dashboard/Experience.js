@@ -28,7 +28,6 @@ function Experience({ experience, deleteExperience }) {
     </tr>
   ));
 
-  console.log(experiences);
   if (experiences.length === 0) return '';
   return (
     <Fragment>

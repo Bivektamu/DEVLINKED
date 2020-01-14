@@ -3,6 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createProfile, getCurrentProfile } from '../../actions/profile';
+import Spinner from '../layout/Spinner';
 
 const EditProfile = ({
   createProfile,
@@ -38,13 +39,14 @@ const EditProfile = ({
       githubusername:
         loading || !profile.githubusername ? '' : profile.githubusername,
       skills: loading || !profile.skills ? '' : profile.skills,
-      youtube: loading || !profile.youtube ? '' : profile.youtube,
-      facebook: loading || !profile.facebook ? '' : profile.facebook,
-      twitter: loading || !profile.twitter ? '' : profile.twitter,
-      instagram: loading || !profile.instagram ? '' : profile.instagram,
-      linkedin: loading || !profile.linkedin ? '' : profile.linkedin
+
+      youtube: loading || !profile.social ? '' : profile.social.youtube,
+      facebook: loading || !profile.social ? '' : profile.social.facebook,
+      twitter: loading || !profile.social ? '' : profile.social.twitter,
+      instagram: loading || !profile.social ? '' : profile.social.instagram,
+      linkedin: loading || !profile.social ? '' : profile.social.linkedin
     });
-  }, [loading]);
+  }, [getCurrentProfile, loading]);
 
   const {
     company,
@@ -66,8 +68,11 @@ const EditProfile = ({
 
   const onSubmit = e => {
     e.preventDefault();
+    console.log(formData);
     createProfile(formData, history, true);
   };
+
+  if (!profile) return <Spinner />;
 
   return (
     <section>

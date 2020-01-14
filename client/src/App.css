@@ -180,7 +180,7 @@ section {
   border-radius: 25px;
   margin-left: 0.5rem;
   margin-right: 0.5rem;
-  width: 160px;
+  /* width: 160px; */
 }
 
 .badge {
@@ -375,14 +375,28 @@ button {
 }
 
 .navbar li {
-  padding: 0.45rem 0;
   margin-bottom: 1rem;
+}
+
+
+.navbar a {
+  color: rgba(255, 255, 255, 0.35);
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.navbar li a {
+  font-size: 0.8rem;
+  transition: all 0.3s ease;
+  display: block;
   position: relative;
+  padding: 0.45rem 0;
   overflow: hidden;
 }
 
-.navbar li:before,
-.navbar li:after {
+.navbar li a:before,
+.navbar li a:after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -396,26 +410,22 @@ button {
   z-index: 1;
 }
 
-.navbar li:after {
+.navbar li a.active,
+.navbar li a:hover {
+  color: var(--light-color);
+}
+
+
+.navbar li a:after {
   background: linear-gradient(to right, #5e42a6, #b74e91);
   transform: translateX(100%);
 }
 
-.navbar li:hover:after {
+.navbar li a:hover:after,
+.navbar li a.active:after {
   transform: none;
 }
 
-.navbar a {
-  color: rgba(255, 255, 255, 0.35);
-  text-transform: uppercase;
-  font-weight: 600;
-  letter-spacing: 2px;
-}
-
-.navbar li a {
-  font-size: 0.8rem;
-  transition: all 0.3s ease;
-}
 
 .navbar .logo {
   margin-bottom: 4rem;
@@ -426,9 +436,6 @@ button {
   display: block;
 }
 
-.navbar li:hover a {
-  color: var(--light-color);
-}
 
 .navbar .welcome span {
   margin-right: 0.6rem;

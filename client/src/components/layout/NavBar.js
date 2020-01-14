@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logOut } from '../../actions/auth';
@@ -8,10 +8,15 @@ const NavBar = ({ auth: { isAuthenticated, loading }, logOut }) => {
   const authLinks = (
     <ul>
       <li>
-        <Link to='/dashboard'>
+        <NavLink activeClassName='active' to='/dashboard'>
           <i className='fas fa-user'></i>&nbsp;
           <span className='hide-sm'>Dashboard</span>
-        </Link>
+        </NavLink>
+      </li>
+      <li>
+        <NavLink activeClassName='active' to='/profiles'>
+          Developers
+        </NavLink>
       </li>
       <li>
         <a href='#!' onClick={logOut}>
@@ -25,13 +30,19 @@ const NavBar = ({ auth: { isAuthenticated, loading }, logOut }) => {
   const guestLinks = (
     <ul>
       <li>
-        <Link to='/profiles'>Developers</Link>
+        <NavLink activeClassName='active' to='/profiles'>
+          Developers
+        </NavLink>
       </li>
       <li>
-        <Link to='/register'>Register</Link>
+        <NavLink activeClassName='active' to='/register'>
+          Register
+        </NavLink>
       </li>
       <li>
-        <Link to='/login'>Login</Link>
+        <NavLink activeClassName='active' to='/login'>
+          Login
+        </NavLink>
       </li>
     </ul>
   );
