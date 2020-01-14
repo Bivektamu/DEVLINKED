@@ -5,6 +5,10 @@ import { Link } from 'react-router-dom';
 
 import Spinner from '../layout/Spinner';
 import Banner from './Banner';
+import About from './About';
+import Experience from './Experience';
+import Education from './Education';
+import GithubRepos from './GithubRepos';
 
 import { getProfileById } from '../../actions/profile';
 
@@ -13,7 +17,6 @@ const Profile = ({
   profile: { profile, loading, repos },
   match
 }) => {
-  console.log();
   useEffect(() => {
     getProfileById(match.params.id);
   }, [getProfileById, match.params.id]);
@@ -27,6 +30,16 @@ const Profile = ({
           Back To Profiles
         </Link>
         <Banner profile={profile} />
+        <About profile={profile} />
+        {profile.experience.length > 0 && (
+          <Experience experience={profile.experience} />
+        )}
+        {profile.education.length > 0 && (
+          <Education education={profile.education} />
+        )}
+        {profile.githubusername && (
+          <GithubRepos githubusername={profile.githubusername} />
+        )}
       </div>
     </section>
   );
@@ -34,6 +47,7 @@ const Profile = ({
 
 Profile.propTypes = {
   getProfileById: PropTypes.func.isRequired,
+
   profile: PropTypes.object.isRequired
 };
 
