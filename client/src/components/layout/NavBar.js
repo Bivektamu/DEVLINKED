@@ -18,6 +18,13 @@ const NavBar = ({ auth: { isAuthenticated, loading }, logOut }) => {
           Developers
         </NavLink>
       </li>
+
+      <li>
+        <NavLink activeClassName='active' to='/posts'>
+          Posts
+        </NavLink>
+      </li>
+
       <li>
         <a href='#!' onClick={logOut}>
           <i className='fas fa-sign-out-alt'></i>&nbsp;

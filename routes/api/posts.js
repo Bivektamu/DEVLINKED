@@ -38,6 +38,7 @@ router.post(
       });
       const post = await newPost.save();
 
+      console.log(Post);
       res.json(post);
     } catch (err) {
       console.log(err.message);
@@ -51,7 +52,9 @@ router.post(
 //@access   Private
 router.get('/', auth, async (req, res) => {
   try {
-    const posts = await Post.find().sort({ date: -1 });
+    const posts = await Post.find()
+      .sort({ date: -1 })
+      .populate('user', ['name', 'avatar']);
     res.json(posts);
   } catch (err) {
     console.log(err.message);
