@@ -3,7 +3,6 @@ const router = express.Router();
 const { check, validationResult } = require('express-validator');
 const auth = require('../../middleware/auth');
 const Post = require('../../models/Post');
-const Profile = require('../../models/Profile');
 const User = require('../../models/User');
 
 //@route    Post api/posts
@@ -26,9 +25,7 @@ router.post(
     }
 
     try {
-      const user = await (await User.findById(req.user.id)).isSelected(
-        '-password'
-      );
+      const user = await User.findById(req.user.id);
 
       const newPost = new Post({
         text: req.body.text,
@@ -36,9 +33,11 @@ router.post(
         avatar: user.avatar,
         user: req.user.id
       });
+
       const post = await newPost.save();
 
-      console.log(Post);
+      console.log(post);
+
       res.json(post);
     } catch (err) {
       console.log(err.message);
@@ -52,9 +51,8 @@ router.post(
 //@access   Private
 router.get('/', auth, async (req, res) => {
   try {
-    const posts = await Post.find()
-      .sort({ date: -1 })
-      .populate('user', ['name', 'avatar']);
+    const posts = await Post.find().sort({ date: -1 });
+    // .populate('user', ['name', 'avatar']);
     res.json(posts);
   } catch (err) {
     console.log(err.message);
@@ -68,6 +66,7 @@ router.get('/', auth, async (req, res) => {
 router.get('/:id', auth, async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
+
     if (!post) {
       return res.status(404).json({ msg: 'Post not found' });
     }
@@ -139,7 +138,6 @@ router.put('/unlike/:post_id', auth, async (req, res) => {
   try {
     const post = await Post.findById(req.params.post_id);
 
-    console.log('asdfasdf');
     //check if user has not yet liked the post
     if (
       post.likes.filter(like => like.user.toString() === req.user.id).length ===
@@ -182,9 +180,7 @@ router.post(
     }
 
     try {
-      const user = await (await User.findById(req.user.id)).isSelected(
-        '-password'
-      );
+      const user = await User.findById(req.user.id);
 
       const post = await Post.findById(req.params.post_id);
 

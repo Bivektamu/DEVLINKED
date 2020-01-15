@@ -20,7 +20,7 @@ const PostSchema = new schema({
     {
       user: {
         type: schema.Types.ObjectId,
-        ref: 'users'
+        ref: 'user'
       }
     }
   ],
@@ -28,7 +28,7 @@ const PostSchema = new schema({
     {
       user: {
         type: schema.Types.ObjectId,
-        ref: 'users'
+        ref: 'user'
       },
       text: {
         type: String,

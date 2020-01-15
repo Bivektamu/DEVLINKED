@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import PostForm from './PostForm';
-import PostItem from './PostItem';
+import PostForm from './PostsForm';
+import PostItem from './PostsItem';
 import Spinner from '../layout/Spinner';
 
 import { getPosts } from '../../actions/posts';
@@ -13,7 +13,7 @@ const Posts = ({ getPosts, posts, loading }) => {
     getPosts();
   }, []);
 
-  if (!posts || posts.posts.length === 0) return <Spinner />;
+  if (!posts) return <Spinner />;
 
   return (
     <section>
