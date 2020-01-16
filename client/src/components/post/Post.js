@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import PostItem from './PostItem';
-import PostForm from './PostForm.js';
+import CommentForm from './CommentForm.js';
 import CommentItem from './CommentItem';
 import Spinner from '../layout/Spinner';
 
@@ -13,9 +13,9 @@ import { getPostById } from '../../actions/posts';
 const Post = ({ getPostById, match, posts: { post, loading } }) => {
   useEffect(() => {
     getPostById(match.params.id);
-  }, [getPostById]);
+  }, [getPostById, match]);
 
-  if (loading) return <Spinner />;
+  if (loading || !post) return <Spinner />;
 
   return (
     <section>
@@ -24,8 +24,10 @@ const Post = ({ getPostById, match, posts: { post, loading } }) => {
           Back To Posts
         </Link>
         <PostItem post={post} />
-        <PostForm postId={match.params.id} />
-        {<CommentItem comments={post.comments} />}
+        <CommentForm postId={match.params.id} />
+        {post.comments && (
+          <CommentItem comments={post.comments} postId={match.params.id} />
+        )}
       </div>
     </section>
   );

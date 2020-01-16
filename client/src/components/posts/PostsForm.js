@@ -12,7 +12,6 @@ const PostsForm = ({ addPost }) => {
 
   const onSubmit = e => {
     e.preventDefault();
-    console.log(formData);
     addPost(formData);
   };
 

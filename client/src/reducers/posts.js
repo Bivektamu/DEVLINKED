@@ -3,8 +3,8 @@ import {
   POSTS_ERROR,
   GET_POST,
   POST_ERROR,
-  POST_LIKED,
-  POST_UNLIKED
+  COMMENT_ADDED,
+  COMMENT_REMOVED
 } from '../actions/types';
 
 const initialState = {
@@ -22,6 +22,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         posts: payload,
+        post: null,
         loading: false
       };
 
@@ -29,6 +30,14 @@ export default function(state = initialState, action) {
       return {
         ...state,
         post: payload,
+        loading: false
+      };
+
+    case COMMENT_ADDED:
+    case COMMENT_REMOVED:
+      return {
+        ...state,
+        post: { ...state.post, comments: payload },
         loading: false
       };
 

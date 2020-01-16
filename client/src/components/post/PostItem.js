@@ -3,10 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const PostItem = ({ post }) => {
-  const {
-    text,
-    user: { _id, name, avatar }
-  } = post;
+  const { text, _id, name, avatar, user } = post;
 
   return (
     <div className='post bg-white p-1 my-1'>

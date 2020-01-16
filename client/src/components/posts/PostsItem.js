@@ -16,7 +16,6 @@ function PostsItem({
   addLikeToPost,
   removeLikeFromPost
 }) {
-  console.log(posts);
   return (
     <div className='posts'>
       {posts.map(

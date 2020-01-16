@@ -465,7 +465,7 @@ button {
 }
 
 /* Register Page */
-form.form {
+.register-page form.form {
   width: 100%;
   max-width: 500px;
 }
@@ -582,7 +582,7 @@ form.form {
 
 .post {
   display: grid;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 1fr 3fr 0.5fr;
   grid-gap: 2rem;
   align-items: center;
 }

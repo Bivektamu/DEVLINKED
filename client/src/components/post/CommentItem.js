@@ -1,31 +1,36 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Moment from 'react-moment';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-const CommentItem = ({ comments }) => {
+import { removeComment } from '../../actions/posts';
+
+const CommentItem = ({ comments, removeComment, postId }) => {
   return (
     <div className='comments'>
-      {comments.map(({ _id, text, name, avatar, user: {} }) => {
+      {comments.map(({ _id, text, name, avatar, user, date }) => {
         return (
-          <div className='post bg-white p-1 my-1'>
+          <div key={_id} className='post bg-white p-1 my-1'>
             <div>
-              <a href='profile.html'>
-                <img
-                  className='round-img'
-                  src='https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200'
-                  alt=''
-                />
-                <h4>John Doe</h4>
-              </a>
+              <Link to={`/profile/${user}`}>
+                <img className='round-img' src={avatar} alt='' />
+                <h4>{name}</h4>
+              </Link>
             </div>
             <div>
-              <p className='my-1'>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint
-                possimus corporis sunt necessitatibus! Minus nesciunt soluta
-                suscipit nobis. Amet accusamus distinctio cupiditate blanditiis
-                dolor? Illo perferendis eveniet cum cupiditate aliquam?
+              <p className='my-1'>{text}</p>
+              <p className='post-date'>
+                Posted on {<Moment format='YYYY/MM/DD'>{date}</Moment>}
               </p>
-              <p className='post-date'>Posted on 04/16/2019</p>
             </div>
+            <button
+              type='button'
+              class='btn btn-danger'
+              onClick={() => removeComment(postId, _id)}
+            >
+              <i class='fas fa-times'></i>
+            </button>
           </div>
         );
       })}
@@ -33,6 +38,10 @@ const CommentItem = ({ comments }) => {
   );
 };
 
-CommentItem.propTypes = {};
+CommentItem.propTypes = {
+  removeComment: PropTypes.func.isRequired,
+  match: PropTypes.array,
+  comments: PropTypes.array.isRequired
+};
 
-export default CommentItem;
+export default connect(null, { removeComment })(CommentItem);

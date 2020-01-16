@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import { addComment } from '../../actions/posts';
 
-const PostForm = ({ postId, addComment }) => {
+const CommentForm = ({ postId, addComment }) => {
   const [formData, setFormData] = useState({
     text: ''
   });
@@ -17,7 +17,7 @@ const PostForm = ({ postId, addComment }) => {
   };
 
   return (
-    <div className='post-form'>
+    <div className='post-form my-4'>
       <div className='bg-primary p'>
         <h3>Leave A Comment</h3>
       </div>
@@ -36,9 +36,9 @@ const PostForm = ({ postId, addComment }) => {
   );
 };
 
-PostForm.propTypes = {
+CommentForm.propTypes = {
   addComment: PropTypes.func.isRequired,
   postId: PropTypes.string.isRequired
 };
 
-export default connect(null, { addComment })(PostForm);
+export default connect(null, { addComment })(CommentForm);
