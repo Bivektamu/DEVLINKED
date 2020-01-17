@@ -24,7 +24,7 @@ const Dashboard = ({
   return (
     <section>
       <div className='container'>
-        <h1 className='large text-primar'>Dashboard</h1>
+        <h1 className='large text-primary'>Dashboard</h1>
         <p className='lead'>
           <i className='fas fa-user'></i>&nbsp;Welcome {user && user.name}
         </p>
