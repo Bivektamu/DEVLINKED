@@ -164,7 +164,7 @@ section {
 }
 
 .btn.w250 {
-  width: 250px;
+  /* width: 250px; */
 }
 
 .btn {
@@ -352,6 +352,10 @@ button {
 }
 
 /* Navbar */
+#nav-toggle {
+  display: none;
+}
+
 .navbar {
   display: flex;
   justify-content: center;
@@ -609,8 +613,34 @@ button {
   margin-bottom: 0.5rem;
 }
 
+/* Tableet Styles */
+@media screen and (max-width: 900px) {
+  .navbar {
+    padding: 30px;
+  }
+
+  section {
+    padding: 0 30px;
+  }
+
+  html {
+    font-size: 14px;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+  }
+}
+
 /* Mobile Styles */
-@media (max-width: 700px) {
+@media (max-width: 760px) {
+
+  .spinner {
+    width: 100%;
+    height: calc(100vh - 73px);
+    top: 73px;
+  }
+
   .container {
     margin-top: 8rem;
   }
@@ -633,22 +663,147 @@ button {
   }
 
   /* Navbar */
+
+  .navbar .logo {
+    width: auto;
+    float: left;
+  }
+
+
+
+  #nav-toggle {
+    display: block;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    float: right;
+    cursor: pointer;
+  }
+
+  #nav-toggle:after {
+    width: 10px;
+    height: 10px;
+    content: '';
+    position: fixed;
+    border-radius: 100%;
+    background: var(--medium-color);
+    top: -5px;
+    right: -5px;
+    transform: scale(14);
+    z-index: 1;
+
+  }
+
+  #nav-toggle span,
+  #nav-toggle span:after,
+  #nav-toggle span:before {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 2px;
+    background: #fff;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    left: 0;
+    right: 0;
+    cursor: pointer;
+    transition: all 0.6s ease;
+    z-index: 10;
+  }
+
+  #nav-toggle span:before {
+    top: -15px;
+  }
+
+  #nav-toggle span:after {
+    bottom: -15px;
+  }
+
+  .navbar.active_nav #nav-toggle span {
+    background: none;
+  }
+
+  .navbar.active_nav #nav-toggle span:before {
+    top: 0;
+    transform: rotate(45deg);
+  }
+
+  .navbar.active_nav #nav-toggle span:after {
+    bottom: 0;
+    transform: rotate(-45deg);
+
+  }
+
   .navbar {
     display: block;
     text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    padding: 20px 15px;
   }
 
   .navbar ul {
     text-align: center;
     justify-content: center;
+    padding: 40px 15px;
+    position: fixed;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 73px);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    top: 73px;
+    overflow: hidden;
+    visibility: hidden;
+  }
+
+  .navbar ul>* {
+    position: relative;
+    z-index: 2;
+    opacity: 0;
+    transition: all 0.6s ease;
+
+  }
+
+  .navbar ul:after {
+    width: 1400px;
+    height: 1400px;
+    content: '';
+    right: -700px;
+    top: -700px;
+    position: fixed;
+    background-color: var(--medium-color);
+    z-index: 1;
+    border-radius: 100%;
+    transform: scale(0);
+    transition: all 0.6s ease;
+  }
+
+  .navbar.active_nav ul {
+    visibility: visible;
+  }
+
+  .navbar.active_nav ul>* {
+    opacity: 1;
+
+  }
+
+  .navbar.active_nav ul:after {
+    transform: none;
   }
 
   .navbar h1 {
-    margin-bottom: 1rem;
+    margin-bottom: 0 !important;
   }
 
-  .navbar .welcome {
-    display: none;
+  section {
+    width: 100% !important;
+    padding: 0 15px;
   }
 
   /* Profiles Page */
@@ -685,7 +840,17 @@ button {
   .dash-buttons a {
     display: block;
     width: 100%;
-    margin-bottom: 0.2rem;
+    text-align: center;
+    margin: 0 0 0.5rem;
+  }
+
+  .table-wrapper {
+    display: block;
+    overflow: auto;
+  }
+
+  .table-wrapper .table {
+    width: 600px;
   }
 
   .post {
@@ -694,6 +859,6 @@ button {
 
   .post a,
   .post button {
-    padding: 0.3rem 0.4rem;
+    padding: 0.3rem 1rem;
   }
 }

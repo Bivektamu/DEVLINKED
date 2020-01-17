@@ -9,8 +9,8 @@ const Education = ({ education, deleteEducation }) => {
   const educations = education.map(edu => (
     <tr key={edu.id}>
       <td>{edu.school}</td>
-      <td className='hide-sm'>{edu.degree}</td>
-      <td className='hide-sm'>
+      <td>{edu.degree}</td>
+      <td>
         <Moment format='YYYY/MM/DD'>{edu.from}</Moment> -{' '}
         {edu.to === null ? (
           'Now'
@@ -33,17 +33,19 @@ const Education = ({ education, deleteEducation }) => {
   return (
     <Fragment>
       <h2 className='my-2'>Education Credentials</h2>
-      <table className='table'>
-        <thead>
-          <tr>
-            <th>School</th>
-            <th className='hide-sm'>Degree</th>
-            <th className='hide-sm'>Years</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>{educations}</tbody>
-      </table>
+      <div className='table-wrapper'>
+        <table className='table'>
+          <thead>
+            <tr>
+              <th>School</th>
+              <th>Degree</th>
+              <th>Years</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>{educations}</tbody>
+        </table>
+      </div>
     </Fragment>
   );
 };
