@@ -613,7 +613,68 @@ button {
   margin-bottom: 0.5rem;
 }
 
-/* Tableet Styles */
+#bug {
+  width: 30px;
+  transform: rotate(180deg);
+  position: absolute;
+  left: calc(30% + 16vw);
+  top: -40px;
+  animation: bugmove 8s infinite;
+}
+
+#bug:after {
+  content: '';
+  position: absolute;
+  top: 26px;
+  /* bottom: 0; */
+  right: 0;
+  left: 0;
+  margin: auto;
+  width: 2px;
+  height: 200px;
+  background-color: rgb(3, 148, 207);
+}
+
+@keyframes bugmove {
+  0% {
+    top: -40px;
+  }
+
+  20% {
+    top: 30px;
+    transform: rotate(180deg) rotateY(45deg);
+
+  }
+
+  30% {
+    top: 50px;
+    transform: rotate(180deg) rotateY(45deg);
+
+  }
+
+  50% {
+    top: 120px;
+    transform: rotate(180deg) rotateY(0);
+
+
+  }
+
+  75% {
+    top: 170px;
+  }
+
+  100% {
+    top: -40px;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  #bug {
+    left: calc(30% + 20vw);
+  }
+}
+
+/* Tablet Styles */
 @media screen and (max-width: 900px) {
   .navbar {
     padding: 30px;

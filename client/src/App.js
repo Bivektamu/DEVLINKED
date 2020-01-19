@@ -4,7 +4,7 @@ import Landing from './components/layout/Landing';
 import Alert from './components/layout/Alert';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
-// import Default from './components/Default';
+import Default from './components/Default';
 import Dashboard from './components/dashboard/Dashboard';
 import Profiles from './components/profiles/Profiles';
 import Profile from './components/profile/Profile';
@@ -39,9 +39,10 @@ const App = () => {
     <Provider store={store}>
       <Router>
         <NavBar />
-        <Route exact path='/' component={Landing} />
         <Alert />
         <Switch>
+          <Route exact path='/' component={Landing} />
+
           <Route exact path='/register' component={Register} />
           <Route exact path='/login' component={Login} />
           <Route exact path='/profiles' component={Profiles} />
@@ -61,6 +62,7 @@ const App = () => {
           <PrivateRoute exact path='/add-education' component={AddEducation} />
           <PrivateRoute exact path='/posts' component={Posts} />
           <PrivateRoute exact path='/posts/:id' component={Post} />
+          <Route component={Default} />
         </Switch>
       </Router>
     </Provider>
