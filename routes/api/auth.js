@@ -4,7 +4,6 @@ const auth = require('../../middleware/auth');
 const User = require('../../models/User');
 const { check, validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken');
-const config = require('config');
 const bcrypt = require('bcryptjs');
 
 //@route    Get api/auth
@@ -34,6 +33,8 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
+    console.log('asdfasdff')
+
     const { email, password } = req.body;
 
     try {
@@ -62,7 +63,7 @@ router.post(
 
       jwt.sign(
         payload,
-        config.get('jwtSecret'),
+        process.env.JWTSECRET,
         { expiresIn: 360000 },
         (err, token) => {
           if (err) throw err;
